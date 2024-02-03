@@ -47,6 +47,12 @@ interface PageContainerProps extends StandardProps {
    */
   customStyle?: string
 
+  /** 是否在下滑一段距离后关闭
+   * @supported weapp
+   * @default false
+   */
+  closeOnSlideDown?: boolean
+
   /** 进入前触发
    * @supported weapp, rn
    */
@@ -81,12 +87,6 @@ interface PageContainerProps extends StandardProps {
    * @supported weapp
    */
   onClickOverlay?: CommonEventFunction
-
-  /** 是否在下滑一段距离后关闭
-   * @supported weapp
-   * @default false
-   */
-  closeOnSlideDown?: string
 }
 declare namespace PageContainerProps {
   /** 弹出位置 */
@@ -114,7 +114,7 @@ declare namespace PageContainerProps {
  *   1. tip: 当前页面最多只有 1 个容器，若已存在容器的情况下，无法增加新的容器
  *   2. tip: wx.navigateBack 无法在页面栈顶调用，此时没有上一级页面
  * @classification viewContainer
- * @supported weapp, rn
+ * @supported weapp, alipay, rn
  * @see https://developers.weixin.qq.com/miniprogram/dev/component/page-container.html
  */
 declare const PageContainer: ComponentType<PageContainerProps>

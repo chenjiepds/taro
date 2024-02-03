@@ -31,6 +31,12 @@ interface SliderProps extends StandardProps, FormItemProps {
    */
   value?: number
 
+  /** 设置 React 非受控状态下的初始取值
+   * @supported h5, rn
+   * @unique
+   */
+  defaultValue?: string
+
   /** 背景条的颜色（请使用 backgroundColor）
    * @default "#e9e9e9"
    * @supported weapp, tt, qq, jd
@@ -73,16 +79,6 @@ interface SliderProps extends StandardProps, FormItemProps {
    */
   showValue?: boolean
 
-  /** 完成一次拖动后触发的事件
-   * @supported weapp, alipay, swan, tt, qq, jd, h5, rn
-   */
-  onChange?: CommonEventFunction<SliderProps.onChangeEventDetail>
-
-  /** 拖动过程中触发的事件
-   * @supported weapp, alipay, swan, tt, qq, jd, h5, rn
-   */
-  onChanging?: CommonEventFunction<SliderProps.onChangeEventDetail>
-
   /** 组件名字，用于表单提交获取数据。
    * @supported alipay
    */
@@ -109,6 +105,16 @@ interface SliderProps extends StandardProps, FormItemProps {
    * @supported qq
    */
   ariaLabel?: string
+
+  /** 完成一次拖动后触发的事件
+   * @supported weapp, alipay, swan, tt, qq, jd, h5, rn
+   */
+  onChange?: CommonEventFunction<SliderProps.onChangeEventDetail>
+
+  /** 拖动过程中触发的事件
+   * @supported weapp, alipay, swan, tt, qq, jd, h5, rn
+   */
+  onChanging?: CommonEventFunction<SliderProps.onChangeEventDetail>
 }
 declare namespace SliderProps {
   interface onChangeEventDetail {
@@ -118,7 +124,7 @@ declare namespace SliderProps {
 
 /** 滑动选择器
  * @classification forms
- * @supported weapp, h5, rn, swan, alipay, tt
+ * @supported weapp, alipay, swan, tt, qq, jd, h5, rn, harmony, harmony_hybrid
  * @example_react
  * ```tsx
  * export default class PageView extends Component {

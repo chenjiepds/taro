@@ -38,7 +38,7 @@ interface ViewProps extends StandardProps {
    * @supported alipay
    * @default false
    */
-  disableScroll?: string
+  disableScroll?: boolean
 
   /** 是否隐藏。
    * @supported alipay
@@ -51,6 +51,21 @@ interface ViewProps extends StandardProps {
    * @default {}
    */
   animation?: TaroGeneral.IAnyObject
+
+  /** 表示组件的语义角色。设置为 img 时，组件聚焦后读屏软件会朗读出 图像 ；设置为 button 时，聚焦后读屏软件会朗读出 按钮 。详情请参见 aria-component。
+   * @supported alipay
+   */
+  role?: string
+
+  /** 无障碍访问，（角色）标识元素的作用
+   * @supported qq
+   */
+  ariaRole?: string
+
+  /** 无障碍访问，（属性）元素的额外描述
+   * @supported qq
+   */
+  ariaLabel?: string
 
   /** 点击。
    * @supported alipay
@@ -116,26 +131,11 @@ interface ViewProps extends StandardProps {
    * @supported alipay
    */
   onFirstAppear?: CommonEventFunction
-
-  /** 表示组件的语义角色。设置为 img 时，组件聚焦后读屏软件会朗读出 图像 ；设置为 button 时，聚焦后读屏软件会朗读出 按钮 。详情请参见 aria-component。
-   * @supported alipay
-   */
-  role?: string
-
-  /** 无障碍访问，（角色）标识元素的作用
-   * @supported qq
-   */
-  ariaRole?: string
-
-  /** 无障碍访问，（属性）元素的额外描述
-   * @supported qq
-   */
-  ariaLabel?: string
 }
 
 /** 视图容器
  * @classification viewContainer
- * @supported weapp, swan, alipay, tt, h5, rn
+ * @supported weapp, alipay, swan, tt, qq, jd, h5, rn, harmony, harmony_hybrid
  * @example_react
  * ```tsx
  * export default class PageView extends Component {

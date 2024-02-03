@@ -6,6 +6,12 @@ interface PickerViewProps extends StandardProps {
    */
   value?: number[]
 
+  /** 设置 React 非受控状态下的初始取值
+   * @supported rn
+   * @unique
+   */
+  defaultValue?: number[]
+
   /** 设置选择器中间选中框的样式
    * @supported weapp, alipay, swan, tt, qq, jd, rn
    */
@@ -32,6 +38,16 @@ interface PickerViewProps extends StandardProps {
    */
   immediateChange?: boolean
 
+  /** 选择器标题，建议标题控制在 12 个中文汉字长度内，避免出现截断现象, 截断部分将以 ... 形式展示
+   * @supported swan
+   */
+  title?: string
+
+  /** 无障碍访问，（属性）元素的额外描述
+   * @supported qq
+   */
+  ariaLabel?: string
+
   /** 当滚动选择，value 改变时触发 change 事件，event.detail = {value: value}；value为数组，表示 picker-view 内的 picker-view-column 当前选择的是第几项（下标从 0 开始）
    * @supported weapp, alipay, swan, tt, qq, jd, rn
    */
@@ -46,16 +62,6 @@ interface PickerViewProps extends StandardProps {
    * @supported weapp, alipay, tt, qq
    */
   onPickEnd?: CommonEventFunction
-
-  /** 选择器标题，建议标题控制在 12 个中文汉字长度内，避免出现截断现象, 截断部分将以 ... 形式展示
-   * @supported swan
-   */
-  title?: string
-
-  /** 无障碍访问，（属性）元素的额外描述
-   * @supported qq
-   */
-  ariaLabel?: string
 }
 declare namespace PickerViewProps {
   interface onChangeEventDetail {
@@ -66,7 +72,7 @@ declare namespace PickerViewProps {
 /** 嵌入页面的滚动选择器
  * 其中只可放置 picker-view-column 组件，其它节点不会显示
  * @classification forms
- * @supported weapp, swan, alipay, tt, h5, rn
+ * @supported weapp, alipay, swan, tt, qq, jd, h5, rn, harmony, harmony_hybrid
  * @example_react
  * ```tsx
  * export default class Picks extends Component {
