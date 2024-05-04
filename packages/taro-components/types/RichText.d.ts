@@ -3,17 +3,36 @@ import { CommonEventFunction, StandardProps } from './common'
 interface RichTextProps extends StandardProps {
   /** 文本是否可选，该属性会使节点显示为 block
    * @default false
-   * @supported weapp
+   * @supported weapp, h5
    */
   userSelect?: boolean
 
-  /** 节点列表/ HTML String */
+  /** 节点列表/ HTML String
+   * @supported weapp, alipay, swan, tt, qq, h5, rn
+   */
   nodes?: Nodes
 
   /** 显示连续空格
-   * @supported weapp, qq, rn
+   * @supported weapp, qq, h5, rn
    */
   space?: keyof RichTextProps.TSpace
+
+  /** 富文本是否可以长按选中，可用于复制，粘贴，长按搜索等场景
+   * @default false（基础库 3.150.1 以前版本）true（基础库 3.150.1 及以后版本）
+   * @supported swan, h5
+   */
+  selectable?: string
+
+  /** 阻止长按图片时弹起默认菜单（将该属性设置为image-menu-prevent或image-menu-prevent="true"），只在初始化时有效，不能动态变更；若不想阻止弹起默认菜单，则不需要设置此属性
+   * @default false
+   * @supported swan
+   */
+  imageMenuPrevent?: string
+
+  /** 富文本中的图片是否可点击预览。在不设置的情况下，若 rich-text 未监听点击事件，则默认开启。未显示设置 preview 时会进行点击默认预览判断，建议显示设置 preview
+   * @supported swan
+   */
+  preview?: string
 
   /** 触摸。
    * @supported alipay
@@ -44,23 +63,6 @@ interface RichTextProps extends StandardProps {
    * @supported alipay
    */
   onLongtap?: CommonEventFunction
-
-  /** 富文本是否可以长按选中，可用于复制，粘贴，长按搜索等场景
-   * @default false（基础库 3.150.1 以前版本）true（基础库 3.150.1 及以后版本）
-   * @supported swan
-   */
-  selectable?: string
-
-  /** 阻止长按图片时弹起默认菜单（将该属性设置为image-menu-prevent或image-menu-prevent="true"），只在初始化时有效，不能动态变更；若不想阻止弹起默认菜单，则不需要设置此属性
-   * @default false
-   * @supported swan
-   */
-  imageMenuPrevent?: string
-
-  /** 富文本中的图片是否可点击预览。在不设置的情况下，若 rich-text 未监听点击事件，则默认开启。未显示设置 preview 时会进行点击默认预览判断，建议显示设置 preview
-   * @supported swan
-   */
-  preview?: string
 }
 
 /** 节点类型
@@ -118,7 +120,7 @@ declare namespace RichTextProps {
 
 /** 富文本
  * @classification base
- * @supported weapp, swan, alipay, tt, h5, rn
+ * @supported weapp, swan, alipay, tt, h5, rn, harmony, harmony_hybrid
  * @example_react
  * ```tsx
  * class App extends Components {

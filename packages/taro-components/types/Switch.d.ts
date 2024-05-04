@@ -7,9 +7,15 @@ interface SwitchProps extends StandardProps, FormItemProps {
    */
   checked?: boolean
 
+  /** 设置在 React 非受控状态下，当前是否选中
+   * @supported h5, rn
+   * @unique
+   */
+  defaultChecked?: boolean
+
   /** 是否禁用
    * @default false
-   * @supported weapp, alipay, swan, tt, qq, rn
+   * @supported weapp, alipay, swan, tt, qq, h5, rn
    */
   disabled?: boolean
 
@@ -24,11 +30,6 @@ interface SwitchProps extends StandardProps, FormItemProps {
    * @supported weapp, alipay, swan, tt, qq, jd, h5, rn
    */
   color?: string
-
-  /** checked 改变时触发 change 事件
-   * @supported weapp, alipay, swan, tt, qq, jd, rn
-   */
-  onChange?: CommonEventFunction<SwitchProps.onChangeEventDetail>
 
   /** 用于透传 `WebComponents` 上的属性到内部 H5 标签上
    * @supported h5
@@ -50,6 +51,11 @@ interface SwitchProps extends StandardProps, FormItemProps {
    * @supported qq
    */
   ariaLabel?: string
+
+  /** checked 改变时触发 change 事件
+   * @supported weapp, alipay, swan, tt, qq, jd, h5, rn
+   */
+  onChange?: CommonEventFunction<SwitchProps.onChangeEventDetail>
 }
 declare namespace SwitchProps {
   interface onChangeEventDetail {
@@ -93,7 +99,7 @@ declare namespace SwitchProps {
  *   </view>
  * </template>
  * ```
- * @supported weapp, h5, rn, swan, alipay, tt
+ * @supported weapp, alipay, swan, tt, qq, jd, h5, rn, harmony, harmony_hybrid
  * @see https://developers.weixin.qq.com/miniprogram/dev/component/switch.html
  */
 declare const Switch: ComponentType<SwitchProps>
